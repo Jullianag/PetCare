@@ -3,6 +3,8 @@ package com.petcare.petcare.model.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_owner")
@@ -16,6 +18,9 @@ public class Owner {
     private String phone;
     private LocalDate birthDate;
     private String password;
+
+    @OneToMany(mappedBy = "owner")
+    private List<Pet> pets = new ArrayList<>();
 
     public Owner() {
     }
@@ -77,4 +82,7 @@ public class Owner {
         this.password = password;
     }
 
+    public List<Pet> getPets() {
+        return pets;
+    }
 }
