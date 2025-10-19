@@ -1,16 +1,11 @@
 package com.petcare.petcare.model.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_care_schedule")
-@Getter
-@Setter
 public class CareSchedule {
 
     @Id
@@ -31,12 +26,14 @@ public class CareSchedule {
     private Instant moment;
 
     @OneToOne
+    @MapsId
     private Pet pet;
 
     public CareSchedule() {
     }
 
-    public CareSchedule(Long id, LocalDate lastVacine, LocalDate nextVacine, String currentMedication, String medicationNotes, LocalDate lastAppointment, LocalDate nextAppointment, String appointmentNotes, LocalDate lastGrooming, String grooming, String notes, Instant moment, Pet pet) {
+    public CareSchedule(Long id, LocalDate lastVacine, LocalDate nextVacine, String currentMedication,
+                        String medicationNotes, LocalDate lastAppointment, LocalDate nextAppointment, String appointmentNotes, LocalDate lastGrooming, String grooming, String notes, Instant moment, Pet pet) {
         this.id = id;
         this.lastVacine = lastVacine;
         this.nextVacine = nextVacine;
@@ -52,5 +49,107 @@ public class CareSchedule {
         this.pet = pet;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getLastVacine() {
+        return lastVacine;
+    }
+
+    public void setLastVacine(LocalDate lastVacine) {
+        this.lastVacine = lastVacine;
+    }
+
+    public LocalDate getNextVacine() {
+        return nextVacine;
+    }
+
+    public void setNextVacine(LocalDate nextVacine) {
+        this.nextVacine = nextVacine;
+    }
+
+    public String getCurrentMedication() {
+        return currentMedication;
+    }
+
+    public void setCurrentMedication(String currentMedication) {
+        this.currentMedication = currentMedication;
+    }
+
+    public String getMedicationNotes() {
+        return medicationNotes;
+    }
+
+    public void setMedicationNotes(String medicationNotes) {
+        this.medicationNotes = medicationNotes;
+    }
+
+    public LocalDate getLastAppointment() {
+        return lastAppointment;
+    }
+
+    public void setLastAppointment(LocalDate lastAppointment) {
+        this.lastAppointment = lastAppointment;
+    }
+
+    public LocalDate getNextAppointment() {
+        return nextAppointment;
+    }
+
+    public void setNextAppointment(LocalDate nextAppointment) {
+        this.nextAppointment = nextAppointment;
+    }
+
+    public String getAppointmentNotes() {
+        return appointmentNotes;
+    }
+
+    public void setAppointmentNotes(String appointmentNotes) {
+        this.appointmentNotes = appointmentNotes;
+    }
+
+    public LocalDate getLastGrooming() {
+        return lastGrooming;
+    }
+
+    public void setLastGrooming(LocalDate lastGrooming) {
+        this.lastGrooming = lastGrooming;
+    }
+
+    public String getGrooming() {
+        return grooming;
+    }
+
+    public void setGrooming(String grooming) {
+        this.grooming = grooming;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public Instant getMoment() {
+        return moment;
+    }
+
+    public void setMoment(Instant moment) {
+        this.moment = moment;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
 }

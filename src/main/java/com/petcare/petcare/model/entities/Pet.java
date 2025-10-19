@@ -24,6 +24,96 @@ public class Pet {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    @OneToOne(mappedBy = "pet")
+    @OneToOne(mappedBy = "pet", cascade = CascadeType.ALL)
     private CareSchedule careSchedule;
+
+    public Pet() {
+    }
+
+    public Pet(Long id, String name, Species species, String breed, Gender gender, LocalDate birthDate,
+               Double weight, Owner owner, CareSchedule careSchedule) {
+        this.id = id;
+        this.name = name;
+        this.species = species;
+        this.breed = breed;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.weight = weight;
+        this.owner = owner;
+        this.careSchedule = careSchedule;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Species getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
+    public CareSchedule getCareSchedule() {
+        return careSchedule;
+    }
+
+    public void setCareSchedule(CareSchedule careSchedule) {
+        this.careSchedule = careSchedule;
+    }
 }
+
+
