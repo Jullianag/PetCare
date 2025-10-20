@@ -3,6 +3,7 @@ package com.petcare.petcare.model.entities;
 import jakarta.persistence.*;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_care_schedule")
@@ -151,5 +152,18 @@ public class CareSchedule {
 
     public void setPet(Pet pet) {
         this.pet = pet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CareSchedule that = (CareSchedule) o;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
     }
 }

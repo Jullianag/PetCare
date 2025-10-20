@@ -5,6 +5,7 @@ import com.petcare.petcare.model.enums.Species;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_pet")
@@ -115,6 +116,19 @@ public class Pet {
 
     public void setCareSchedule(CareSchedule careSchedule) {
         this.careSchedule = careSchedule;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Pet pet = (Pet) o;
+        return Objects.equals(getId(), pet.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getId());
     }
 }
 
