@@ -14,8 +14,10 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Enumerated(EnumType.STRING)
     private Species species;
     private String breed;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private LocalDate birthDate;
     private Double weight;
