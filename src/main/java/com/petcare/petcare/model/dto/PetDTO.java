@@ -3,8 +3,6 @@ package com.petcare.petcare.model.dto;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.model.enums.Gender;
 import com.petcare.petcare.model.enums.Species;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 
 import java.time.LocalDate;
 
