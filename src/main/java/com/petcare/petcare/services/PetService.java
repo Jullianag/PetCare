@@ -47,6 +47,11 @@ public class PetService {
         return new PetDTO(petRepository.save(entity));
     }
 
+    @Transactional
+    public void delete(Long id) {
+        petRepository.deleteById(id);
+    }
+
     private void copyDtoToEntity(PetDTO dto, Pet entity) {
         entity.setName(dto.getName());
         entity.setSpecies(dto.getSpecies());
