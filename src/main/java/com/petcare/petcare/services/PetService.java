@@ -31,15 +31,28 @@ public class PetService {
 
     @Transactional
     public PetDTO insert(PetDTO dto) {
-        Pet entity = new Pet();
 
+        Pet entity = new Pet();
+        copyDtoToEntity(dto, entity);
+
+        return new PetDTO(petRepository.save(entity));
+    }
+
+    @Transactional
+    public PetDTO update(Long id, PetDTO dto) {
+
+        Pet entity = petRepository.getReferenceById(id);
+        copyDtoToEntity(dto, entity);
+
+        return new PetDTO(petRepository.save(entity));
+    }
+
+    private void copyDtoToEntity(PetDTO dto, Pet entity) {
         entity.setName(dto.getName());
         entity.setSpecies(dto.getSpecies());
         entity.setBreed(dto.getBreed());
         entity.setGender(dto.getGender());
         entity.setBirthDate(dto.getBirthDate());
         entity.setWeight(dto.getWeight());
-
-        return new PetDTO(petRepository.save(entity));
     }
 }

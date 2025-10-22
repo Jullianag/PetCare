@@ -42,4 +42,10 @@ public class PetController {
                 .buildAndExpand(petDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(petDTO);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<PetDTO> update(@PathVariable Long id, @RequestBody PetDTO petDTO) {
+        petDTO = petService.update(id, petDTO);
+        return ResponseEntity.ok(petDTO);
+    }
 }
