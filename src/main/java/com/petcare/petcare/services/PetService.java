@@ -8,9 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class PetService {
 
@@ -30,5 +27,19 @@ public class PetService {
     public Page<PetDTO> findAll(Pageable pageable) {
         Page<Pet> petList = petRepository.findAll(pageable);
         return petList.map(PetDTO::new);
+    }
+
+    @Transactional
+    public PetDTO insert(PetDTO dto) {
+        Pet entity = new Pet();
+
+        entity.setName(dto.getName());
+        entity.setSpecies(dto.getSpecies());
+        entity.setBreed(dto.getBreed());
+        entity.setGender(dto.getGender());
+        entity.setBirthDate(dto.getBirthDate());
+        entity.setWeight(dto.getWeight());
+
+        return new PetDTO(petRepository.save(entity));
     }
 }
