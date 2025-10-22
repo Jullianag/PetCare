@@ -3,6 +3,7 @@ package com.petcare.petcare.services;
 import com.petcare.petcare.model.dto.PetDTO;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.repositories.PetRepository;
+import com.petcare.petcare.services.exceptions.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,9 @@ public class PetService {
 
     @Transactional(readOnly = true)
     public PetDTO findById(Long id) {
-        Pet pet = petRepository.findById(id).get();
+        Pet pet = petRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Pet not found for this id: " + id + " .")
+        );
         return new PetDTO(pet);
     }
 

@@ -16,9 +16,6 @@ public class PetDTO {
     private LocalDate birthDate;
     private Double weight;
 
-    public PetDTO() {
-    }
-
     public PetDTO(Long id, String name, Species species, String breed, Gender gender, LocalDate birthDate, Double weight) {
         this.id = id;
         this.name = name;
