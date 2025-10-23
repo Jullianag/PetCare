@@ -3,10 +3,14 @@ package com.petcare.petcare.services;
 import com.petcare.petcare.model.dto.PetDTO;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.repositories.PetRepository;
+import com.petcare.petcare.services.exceptions.DatabaseException;
 import com.petcare.petcare.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -44,15 +48,29 @@ public class PetService {
     @Transactional
     public PetDTO update(Long id, PetDTO dto) {
 
-        Pet entity = petRepository.getReferenceById(id);
-        copyDtoToEntity(dto, entity);
+        try {
+            Pet entity = petRepository.getReferenceById(id);
+            copyDtoToEntity(dto, entity);
+            return new PetDTO(petRepository.save(entity));
 
-        return new PetDTO(petRepository.save(entity));
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Pet not found for this id: " + id + " .");
+        }
+
     }
 
-    @Transactional
+    @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
-        petRepository.deleteById(id);
+
+        if (!petRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Pet not found for this id: " + id + " .");
+        }
+        try {
+            petRepository.deleteById(id);
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Referential integrity violation");
+        }
     }
 
     private void copyDtoToEntity(PetDTO dto, Pet entity) {
