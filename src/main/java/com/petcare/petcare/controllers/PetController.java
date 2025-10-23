@@ -3,6 +3,7 @@ package com.petcare.petcare.controllers;
 import com.petcare.petcare.model.dto.PetDTO;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.services.PetService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class PetController {
     }
 
     @PostMapping
-    public ResponseEntity<PetDTO> insert(@RequestBody PetDTO petDTO) {
+    public ResponseEntity<PetDTO> insert(@Valid @RequestBody PetDTO petDTO) {
         petDTO = petService.insert(petDTO);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -44,7 +45,7 @@ public class PetController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<PetDTO> update(@PathVariable Long id, @RequestBody PetDTO petDTO) {
+    public ResponseEntity<PetDTO> update(@PathVariable Long id, @Valid @RequestBody PetDTO petDTO) {
         petDTO = petService.update(id, petDTO);
         return ResponseEntity.ok(petDTO);
     }

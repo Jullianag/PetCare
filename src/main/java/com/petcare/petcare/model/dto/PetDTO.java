@@ -3,17 +3,23 @@ package com.petcare.petcare.model.dto;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.model.enums.Gender;
 import com.petcare.petcare.model.enums.Species;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public class PetDTO {
 
     private Long id;
+    @Size(min = 2, max = 30, message = "Name must be between 2 and 30 characters long.")
+    @NotBlank(message = "Name cannot be blank.")
     private String name;
+    @NotNull (message = "Species cannot be blank.")
     private Species species;
     private String breed;
     private Gender gender;
+    @PastOrPresent(message = "Birth date must be in the past or present.")
     private LocalDate birthDate;
+    @Positive(message = "Weight must be positive.")
     private Double weight;
 
     public PetDTO() {
