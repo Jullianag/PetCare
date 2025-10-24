@@ -31,8 +31,8 @@ public class PetService {
     }
 
     @Transactional(readOnly = true)
-    public Page<PetDTO> findAll(Pageable pageable) {
-        Page<Pet> petList = petRepository.findAll(pageable);
+    public Page<PetDTO> findAll(String name, Pageable pageable) {
+        Page<Pet> petList = petRepository.searchPetsByName(name, pageable);
         return petList.map(PetDTO::new);
     }
 

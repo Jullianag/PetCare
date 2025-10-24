@@ -3,9 +3,7 @@ package com.petcare.petcare.model.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_owner")
@@ -24,6 +22,12 @@ public class Owner {
 
     @OneToMany(mappedBy = "owner")
     private List<Pet> pets = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "tb_owner_role",
+            joinColumns = @JoinColumn(name = "owner_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     public Owner() {
     }
@@ -89,6 +93,23 @@ public class Owner {
         return pets;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    public boolean hasRole(String roleName) {
+        for (Role role : roles) {
+            if (role.getAuthority().equals(roleName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -101,4 +122,6 @@ public class Owner {
     public int hashCode() {
         return Objects.hashCode(getId());
     }
+
+
 }

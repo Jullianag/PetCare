@@ -20,21 +20,24 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<CustomError> notFound(ResourceNotFoundException e, HttpServletRequest request) {
         HttpStatus httpStatus = HttpStatus.NOT_FOUND;
-        CustomError customError = new CustomError(Instant.now(), httpStatus.value(), e.getMessage(), request.getRequestURI());
+        CustomError customError = new CustomError(Instant.now(), httpStatus.value(),
+                e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(httpStatus).body(customError);
     }
 
     @ExceptionHandler(DatabaseException.class)
     public ResponseEntity<CustomError> database(DatabaseException e, HttpServletRequest request) {
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
-        CustomError customError = new CustomError(Instant.now(), httpStatus.value(), e.getMessage(), request.getRequestURI());
+        CustomError customError = new CustomError(Instant.now(), httpStatus.value(),
+                e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(httpStatus).body(customError);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CustomError> methodArgumentNotValidation(MethodArgumentNotValidException e, HttpServletRequest request) {
         HttpStatus httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
-        ValidationError validationError = new ValidationError(Instant.now(), httpStatus.value(), "Invalid data", request.getRequestURI());
+        ValidationError validationError = new ValidationError(Instant.now(), httpStatus.value(),
+                "Invalid data", request.getRequestURI());
 
         for (FieldError f : e.getBindingResult().getFieldErrors()) {
             validationError.addError(f.getField(), f.getDefaultMessage());
