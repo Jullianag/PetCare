@@ -1,5 +1,5 @@
-INSERT INTO tb_owner(name, email, phone, birth_date, password) VALUES ('Alex Green', 'alex@gmail.com', '11995618563', '1990-01-01', '$2a$10$N7SkKCa3r17ga.i.dF9iy.BFUBL2n3b6Z1CWSZWi/qy7ABq/E6VpO');
-INSERT INTO tb_owner(name, email, phone, birth_date, password) VALUES ('Maria Silva', 'maria@gmail.com', '48995612063', '1981-03-22', '$2a$10$N7SkKCa3r17ga.i.dF9iy.BFUBL2n3b6Z1CWSZWi/qy7ABq/E6VpO');
+INSERT INTO tb_owner(name, email, phone, birth_date, password) VALUES ('Alex Green', 'alex@gmail.com', '11995618563', '1990-01-01', '$2a$10$OCSQQBujamNjaEVeJinSIeiVItqEwt/g/wYjCoQZgLVJsvLDwPE9.');
+INSERT INTO tb_owner(name, email, phone, birth_date, password) VALUES ('Maria Silva', 'maria@gmail.com', '48995612063', '1981-03-22', '$2a$10$OCSQQBujamNjaEVeJinSIeiVItqEwt/g/wYjCoQZgLVJsvLDwPE9.');
 
 INSERT INTO tb_role(authority) VALUES ( 'ROLE_ADMIN');
 INSERT INTO tb_role(authority) VALUES ('ROLE_CLIENT');

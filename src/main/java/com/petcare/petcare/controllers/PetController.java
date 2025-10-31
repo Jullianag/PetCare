@@ -1,7 +1,6 @@
 package com.petcare.petcare.controllers;
 
 import com.petcare.petcare.model.dto.PetDTO;
-import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.services.PetService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
