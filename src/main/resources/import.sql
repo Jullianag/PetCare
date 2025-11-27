@@ -1,11 +1,11 @@
 INSERT INTO tb_owner(name, email, phone, birth_date, password) VALUES ('Alex Green', 'alex@gmail.com', '11995618563', '1990-01-01', '$2a$10$OCSQQBujamNjaEVeJinSIeiVItqEwt/g/wYjCoQZgLVJsvLDwPE9.');
 INSERT INTO tb_owner(name, email, phone, birth_date, password) VALUES ('Maria Silva', 'maria@gmail.com', '48995612063', '1981-03-22', '$2a$10$OCSQQBujamNjaEVeJinSIeiVItqEwt/g/wYjCoQZgLVJsvLDwPE9.');
 
-INSERT INTO tb_role(authority) VALUES ( 'ROLE_ADMIN');
+INSERT INTO tb_role(authority) VALUES ('ROLE_ADMIN');
 INSERT INTO tb_role(authority) VALUES ('ROLE_CLIENT');
 
 INSERT INTO tb_owner_role(owner_id, role_id) VALUES (1, 1);
-INSERT INTO tb_owner_role(owner_id, role_id) VALUES (2, 1);
+INSERT INTO tb_owner_role(owner_id, role_id) VALUES (1, 2);
 INSERT INTO tb_owner_role(owner_id, role_id) VALUES (2, 2);
 
 INSERT INTO tb_pet(name, species, breed, gender, birth_date, weight, owner_id) VALUES ('Bella', 'CAT', 'Ragdoll', 'FEMALE', '2021-01-01', 7.2, 1);

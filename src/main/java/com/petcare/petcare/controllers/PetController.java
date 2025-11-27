@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -35,6 +36,7 @@ public class PetController {
         return ResponseEntity.ok(petDTOPage);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<PetDTO> insert(@Valid @RequestBody PetDTO petDTO) {
         petDTO = petService.insert(petDTO);
@@ -45,12 +47,14 @@ public class PetController {
         return ResponseEntity.created(uri).body(petDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<PetDTO> update(@PathVariable Long id, @Valid @RequestBody PetDTO petDTO) {
         petDTO = petService.update(id, petDTO);
         return ResponseEntity.ok(petDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         petService.delete(id);
