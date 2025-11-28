@@ -1,6 +1,7 @@
 package com.petcare.petcare.services;
 
 import com.petcare.petcare.model.dto.PetDTO;
+import com.petcare.petcare.model.dto.PetMinDTO;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.repositories.PetRepository;
 import com.petcare.petcare.services.exceptions.DatabaseException;
@@ -31,9 +32,9 @@ public class PetService {
     }
 
     @Transactional(readOnly = true)
-    public Page<PetDTO> findAll(String name, Pageable pageable) {
+    public Page<PetMinDTO> findAll(String name, Pageable pageable) {
         Page<Pet> petList = petRepository.searchPetsByName(name, pageable);
-        return petList.map(PetDTO::new);
+        return petList.map(PetMinDTO::new);
     }
 
     @Transactional

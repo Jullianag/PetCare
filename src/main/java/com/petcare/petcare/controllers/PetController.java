@@ -1,6 +1,7 @@
 package com.petcare.petcare.controllers;
 
 import com.petcare.petcare.model.dto.PetDTO;
+import com.petcare.petcare.model.dto.PetMinDTO;
 import com.petcare.petcare.services.PetService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -29,10 +30,10 @@ public class PetController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PetDTO>> findAll(
+    public ResponseEntity<Page<PetMinDTO>> findAll(
             @RequestParam(name = "name", defaultValue = "") String name,
             Pageable pageable) {
-        Page<PetDTO> petDTOPage = petService.findAll(name, pageable);
+        Page<PetMinDTO> petDTOPage = petService.findAll(name, pageable);
         return ResponseEntity.ok(petDTOPage);
     }
 

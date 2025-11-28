@@ -22,6 +22,7 @@ public class Pet {
     private Gender gender;
     private LocalDate birthDate;
     private Double weight;
+    private String imgUrl;
 
     @ManyToOne
     @JoinColumn(name = "owner_id")
@@ -34,7 +35,7 @@ public class Pet {
     }
 
     public Pet(Long id, String name, Species species, String breed, Gender gender, LocalDate birthDate,
-               Double weight, Owner owner, CareSchedule careSchedule) {
+               Double weight, String imgUrl, Owner owner, CareSchedule careSchedule) {
         this.id = id;
         this.name = name;
         this.species = species;
@@ -42,6 +43,7 @@ public class Pet {
         this.gender = gender;
         this.birthDate = birthDate;
         this.weight = weight;
+        this.imgUrl = imgUrl;
         this.owner = owner;
         this.careSchedule = careSchedule;
     }
@@ -100,6 +102,14 @@ public class Pet {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public Owner getOwner() {
