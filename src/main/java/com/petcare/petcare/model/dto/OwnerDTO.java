@@ -2,6 +2,7 @@ package com.petcare.petcare.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.Owner;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class OwnerDTO {
 
+    @Schema(description = "Database generated pet ID")
     private Long id;
     private String name;
     private String email;

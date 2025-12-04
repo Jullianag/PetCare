@@ -2,6 +2,7 @@ package com.petcare.petcare.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.CareSchedule;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 
 import java.time.Instant;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 
 public class CareScheduleDTO {
 
+    @Schema(description = "Database generated pet ID")
     private Long id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")

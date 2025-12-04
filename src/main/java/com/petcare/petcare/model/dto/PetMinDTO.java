@@ -3,16 +3,20 @@ package com.petcare.petcare.model.dto;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.model.enums.Gender;
 import com.petcare.petcare.model.enums.Species;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public class PetMinDTO {
 
+    @Schema(description = "Database generated pet ID")
     private Long id;
 
     private String name;
     private String breed;
+
+    @Schema(description = "Pet weight")
     private Double weight;
 
     public PetMinDTO() {

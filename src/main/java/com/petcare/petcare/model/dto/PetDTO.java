@@ -4,21 +4,25 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.model.enums.Gender;
 import com.petcare.petcare.model.enums.Species;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
 public class PetDTO {
 
+    @Schema(description = "Database generated pet ID")
     private Long id;
 
     private OwnerMinDTO ownerMinDTO;
 
     @Size(min = 2, max = 30, message = "Name must be between 2 and 30 characters long.")
     @NotBlank(message = "Name cannot be blank.")
+    @Schema(description = "Pet name")
     private String name;
 
     @NotNull (message = "Species cannot be blank.")
+    @Schema(description = "Type species")
     private Species species;
 
     private String breed;
@@ -26,8 +30,11 @@ public class PetDTO {
 
     @PastOrPresent(message = "Birth date must be in the past or present.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @Schema(description = "Pet birthDate")
     private LocalDate birthDate;
+
     @Positive(message = "Weight must be positive.")
+    @Schema(description = "Pet weight")
     private Double weight;
 
     private CareScheduleMinDTO careScheduleMinDTO;

@@ -20,6 +20,6 @@ public class OpenAPIConfig {
                         .version("v0.0.1")
                         .license(new License()
                                 .name("MIT License")
-                                .url("https://opensource.org/licenses/MIT")));
+                                .url("https://github.com/Jullianag/PetCare/blob/main/LICENSE")));
     }
 }
