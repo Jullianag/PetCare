@@ -14,17 +14,15 @@ public class PetMinDTO {
     private String name;
     private String breed;
     private Double weight;
-    private String imgUrl;
 
     public PetMinDTO() {
     }
 
-    public PetMinDTO(Long id, String name, String breed, Double weight, String imgUrl) {
+    public PetMinDTO(Long id, String name, String breed, Double weight) {
         this.id = id;
         this.name = name;
         this.breed = breed;
         this.weight = weight;
-        this.imgUrl = imgUrl;
     }
 
     public PetMinDTO(Pet entity) {
@@ -32,7 +30,6 @@ public class PetMinDTO {
         name = entity.getName();
         breed = entity.getBreed();
         weight = entity.getWeight();
-        imgUrl = entity.getImgUrl();
     }
 
     public Long getId() {
@@ -50,4 +47,5 @@ public class PetMinDTO {
     public Double getWeight() {
         return weight;
     }
+
 }

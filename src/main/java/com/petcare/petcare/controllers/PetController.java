@@ -2,8 +2,10 @@ package com.petcare.petcare.controllers;
 
 import com.petcare.petcare.model.dto.PetDTO;
 import com.petcare.petcare.model.dto.PetMinDTO;
+import com.petcare.petcare.services.OwnerService;
 import com.petcare.petcare.services.PetService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,9 @@ import java.net.URI;
 public class PetController {
 
     private final PetService petService;
+
+    @Autowired
+    private OwnerService ownerService;
 
     public PetController(PetService petService) {
         this.petService = petService;
@@ -37,7 +42,7 @@ public class PetController {
         return ResponseEntity.ok(petDTOPage);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @PostMapping
     public ResponseEntity<PetDTO> insert(@Valid @RequestBody PetDTO petDTO) {
         petDTO = petService.insert(petDTO);

@@ -1,5 +1,6 @@
 package com.petcare.petcare.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.Owner;
 import jakarta.persistence.Column;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +15,7 @@ public class OwnerDTO {
     private String name;
     private String email;
     private String phone;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate birthDate;
 
     private List<String> roles = new ArrayList<>();
