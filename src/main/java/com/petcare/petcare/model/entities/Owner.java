@@ -25,7 +25,7 @@ public class Owner implements UserDetails {
     @OneToMany(mappedBy = "owner")
     private List<Pet> pets = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_owner_role",
             joinColumns = @JoinColumn(name = "owner_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

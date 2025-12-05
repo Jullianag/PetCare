@@ -3,12 +3,11 @@ package com.petcare.petcare.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.Owner;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class OwnerDTO {
 
@@ -20,7 +19,7 @@ public class OwnerDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate birthDate;
 
-    private List<String> roles = new ArrayList<>();
+    private Set<RoleDTO> roles = new HashSet<>();
 
     public OwnerDTO(Owner entity) {
         id = entity.getId();
@@ -29,9 +28,11 @@ public class OwnerDTO {
         phone = entity.getPhone();
         birthDate = entity.getBirthDate();
 
-        for (GrantedAuthority role : entity.getRoles()) {
+        entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
+
+        /*for (GrantedAuthority role : entity.getRoles()) {
             roles.add(role.getAuthority());
-        }
+        }*/
     }
 
     public Long getId() {
@@ -54,7 +55,7 @@ public class OwnerDTO {
         return birthDate;
     }
 
-    public List<String> getRoles() {
+    public Set<RoleDTO> getRoles() {
         return roles;
     }
 }
