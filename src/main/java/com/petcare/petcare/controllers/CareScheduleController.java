@@ -4,6 +4,7 @@ import com.petcare.petcare.model.dto.CareScheduleDTO;
 import com.petcare.petcare.services.CareScheduleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,6 +33,7 @@ public class CareScheduleController {
                     @ApiResponse(description = "Not Found", responseCode = "404")
             }
     )
+    @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<CareScheduleDTO> findById(@PathVariable Long id) {

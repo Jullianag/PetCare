@@ -119,7 +119,6 @@ public class PetService {
             schedule.setCurrentMedication(cs.getCurrentMedication());
             schedule.setNextAppointment(cs.getNextAppointment());
             schedule.setGrooming(cs.getGrooming());
-            schedule.setMoment(Instant.now());
 
             entity.setCareSchedule(schedule);
         }

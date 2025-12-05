@@ -6,6 +6,7 @@ import com.petcare.petcare.services.OwnerService;
 import com.petcare.petcare.services.PetService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,7 @@ public class PetController {
                     @ApiResponse(description = "Unprocessable Entity", responseCode = "422")
             }
     )
+    @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @PostMapping(produces = "application/json")
     public ResponseEntity<PetDTO> insert(@Valid @RequestBody PetDTO petDTO) {
@@ -95,6 +97,7 @@ public class PetController {
                     @ApiResponse(description = "Unprocessable Entity", responseCode = "422")
             }
     )
+    @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<PetDTO> update(@PathVariable Long id, @Valid @RequestBody PetDTO petDTO) {
@@ -114,6 +117,7 @@ public class PetController {
                     @ApiResponse(description = "Unprocessable Entity", responseCode = "422")
             }
     )
+    @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

@@ -23,8 +23,11 @@ public class CareSchedule {
     private String grooming;
     private String notes;
 
-    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    private Instant moment;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAt;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant updatedAt;
 
     @OneToOne
     @MapsId
@@ -34,7 +37,9 @@ public class CareSchedule {
     }
 
     public CareSchedule(Long id, LocalDate lastVacine, LocalDate nextVacine, String currentMedication,
-                        String medicationNotes, LocalDate lastAppointment, LocalDate nextAppointment, String appointmentNotes, LocalDate lastGrooming, String grooming, String notes, Instant moment, Pet pet) {
+                        String medicationNotes, LocalDate lastAppointment, LocalDate nextAppointment,
+                        String appointmentNotes, LocalDate lastGrooming, String grooming, String notes,
+                        Pet pet) {
         this.id = id;
         this.lastVacine = lastVacine;
         this.nextVacine = nextVacine;
@@ -46,7 +51,6 @@ public class CareSchedule {
         this.lastGrooming = lastGrooming;
         this.grooming = grooming;
         this.notes = notes;
-        this.moment = moment;
         this.pet = pet;
     }
 
@@ -138,12 +142,14 @@ public class CareSchedule {
         this.notes = notes;
     }
 
-    public Instant getMoment() {
-        return moment;
+    @PrePersist
+    public void prePersist() {
+        createdAt = Instant.now();
     }
 
-    public void setMoment(Instant moment) {
-        this.moment = moment;
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = Instant.now();
     }
 
     public Pet getPet() {

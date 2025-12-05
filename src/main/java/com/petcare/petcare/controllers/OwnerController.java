@@ -6,6 +6,7 @@ import com.petcare.petcare.services.OwnerService;
 import com.petcare.petcare.services.PetService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -37,6 +38,7 @@ public class OwnerController {
                     @ApiResponse(description = "Not Found", responseCode = "404")
             }
     )
+    @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @GetMapping(value = "/me", produces = "application/json")
     public ResponseEntity<OwnerDTO> findMe() {

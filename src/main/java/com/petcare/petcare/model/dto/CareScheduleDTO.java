@@ -39,13 +39,12 @@ public class CareScheduleDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING,
             pattern = "dd/MM/yyyy HH:mm:ss",
             timezone = "America/Sao_Paulo")
-    private Instant moment;
 
     private PetMinDTO petMinDTO;
 
     public CareScheduleDTO(Long id, LocalDate lastVacine, LocalDate nextVacine, String currentMedication,
                            String medicationNotes, LocalDate lastAppointment, LocalDate nextAppointment,
-                           String appointmentNotes, LocalDate lastGrooming, String grooming, String notes, Instant moment) {
+                           String appointmentNotes, LocalDate lastGrooming, String grooming, String notes) {
         this.id = id;
         this.lastVacine = lastVacine;
         this.nextVacine = nextVacine;
@@ -57,7 +56,6 @@ public class CareScheduleDTO {
         this.lastGrooming = lastGrooming;
         this.grooming = grooming;
         this.notes = notes;
-        this.moment = moment;
     }
 
     public CareScheduleDTO(CareSchedule entity) {
@@ -72,7 +70,6 @@ public class CareScheduleDTO {
         this.lastGrooming = entity.getLastGrooming();
         this.grooming = entity.getGrooming();
         this.notes = entity.getNotes();
-        this.moment = entity.getMoment();
 
         if (entity.getPet() != null) {
             this.petMinDTO = new PetMinDTO(entity.getPet());
@@ -121,10 +118,6 @@ public class CareScheduleDTO {
 
     public String getNotes() {
         return notes;
-    }
-
-    public Instant getMoment() {
-        return moment;
     }
 
     public PetMinDTO getPetMinDTO() {
