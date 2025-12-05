@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.CareSchedule;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -13,18 +15,22 @@ public class CareScheduleDTO {
     @Schema(description = "Database generated pet ID")
     private Long id;
 
+    @PastOrPresent(message = "Last vacination date must be in the past or present.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate lastVacine;
 
+    @FutureOrPresent(message = "Next vacination date must be in the future or present.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate nextVacine;
 
     private String currentMedication;
     private String medicationNotes;
 
+    @PastOrPresent(message = "Last appointment date must be in the past or present.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate lastAppointment;
 
+    @FutureOrPresent(message = "Next appointment date must be in the future or present.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate nextAppointment;
 

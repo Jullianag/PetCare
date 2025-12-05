@@ -3,6 +3,7 @@ package com.petcare.petcare.model.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.Owner;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.time.LocalDate;
@@ -13,9 +14,16 @@ public class OwnerDTO {
 
     @Schema(description = "Database generated pet ID")
     private Long id;
+
+    @Size(min = 3, max = 60, message = "Name must be between 5 and 60 characters long.")
+    @NotBlank(message = "Name cannot be blank.")
     private String name;
+
+    @Email(message = "Invalid email format.")
     private String email;
     private String phone;
+
+    @PastOrPresent(message = "Birth date must be in the past or present.")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate birthDate;
 
