@@ -1,9 +1,9 @@
 package com.petcare.petcare.services;
 
-import com.petcare.petcare.model.dto.*;
-import com.petcare.petcare.model.entities.CareSchedule;
+import com.petcare.petcare.model.dto.OwnerDTO;
+import com.petcare.petcare.model.dto.OwnerInsertDTO;
+import com.petcare.petcare.model.dto.RoleDTO;
 import com.petcare.petcare.model.entities.Owner;
-import com.petcare.petcare.model.entities.Pet;
 import com.petcare.petcare.model.entities.Role;
 import com.petcare.petcare.projections.UserDetailsProjection;
 import com.petcare.petcare.repositories.OwnerRepository;
@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -33,9 +34,12 @@ public class OwnerService implements UserDetailsService {
 
     private final RoleRepository roleRepository;
 
-    public OwnerService(OwnerRepository ownerRepository, RoleRepository roleRepository) {
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public OwnerService(OwnerRepository ownerRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.ownerRepository = ownerRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -92,9 +96,10 @@ public class OwnerService implements UserDetailsService {
     }
 
     @Transactional
-    public OwnerDTO insert(OwnerDTO dto) {
+    public OwnerDTO insert(OwnerInsertDTO dto) {
 
         Owner entity = new Owner();
+        entity.setPassword(passwordEncoder.encode(dto.getPassword()));
         copyDtoToEntity(dto, entity);
 
         return new OwnerDTO(ownerRepository.save(entity));

@@ -21,6 +21,9 @@ public class OwnerDTO {
 
     private Set<RoleDTO> roles = new HashSet<>();
 
+    public OwnerDTO() {
+    }
+
     public OwnerDTO(Owner entity) {
         id = entity.getId();
         name = entity.getName();
