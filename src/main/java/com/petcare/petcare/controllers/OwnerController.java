@@ -45,6 +45,7 @@ public class OwnerController {
         return ResponseEntity.ok(ownerDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(produces = "application/json")
     public ResponseEntity<Page<OwnerDTO>> findAll(
             Pageable pageable) {
@@ -52,12 +53,14 @@ public class OwnerController {
         return ResponseEntity.ok(ownerDTOPage);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<OwnerDTO> findById(@PathVariable Long id) {
         OwnerDTO ownerDTO = ownerService.findById(id);
         return ResponseEntity.ok(ownerDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping(produces = "application/json")
     public ResponseEntity<OwnerDTO> insert(@Valid @RequestBody OwnerInsertDTO ownerInsertDTO) {
         OwnerDTO ownerDTO = ownerService.insert(ownerInsertDTO);
@@ -68,12 +71,14 @@ public class OwnerController {
         return ResponseEntity.created(uri).body(ownerDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<OwnerDTO> update(@PathVariable Long id, @Valid @RequestBody OwnerUpdateDTO ownerDTO) {
         OwnerDTO newDTO = ownerService.update(id, ownerDTO);
         return ResponseEntity.ok(newDTO);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         ownerService.delete(id);
