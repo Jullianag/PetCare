@@ -60,7 +60,6 @@ public class OwnerController {
         return ResponseEntity.ok(ownerDTO);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping(produces = "application/json")
     public ResponseEntity<OwnerDTO> insert(@Valid @RequestBody OwnerInsertDTO ownerInsertDTO) {
         OwnerDTO ownerDTO = ownerService.insert(ownerInsertDTO);

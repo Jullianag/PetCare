@@ -100,8 +100,13 @@ public class OwnerService implements UserDetailsService {
     public OwnerDTO insert(OwnerInsertDTO dto) {
 
         Owner entity = new Owner();
-        entity.setPassword(passwordEncoder.encode(dto.getPassword()));
         copyDtoToEntity(dto, entity);
+
+        entity.getRoles().clear();
+        Role role = roleRepository.findByAuthority("ROLE_CLIENT");
+        entity.getRoles().add(role);
+
+        entity.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         return new OwnerDTO(ownerRepository.save(entity));
     }
