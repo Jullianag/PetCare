@@ -1,5 +1,8 @@
 package com.petcare.petcare.model.dto;
 
+import com.petcare.petcare.services.validation.OwnerInsertValid;
+
+@OwnerInsertValid
 public class OwnerInsertDTO extends OwnerDTO {
 
     private String password;
