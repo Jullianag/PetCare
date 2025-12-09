@@ -2,6 +2,7 @@ package com.petcare.petcare.services;
 
 import com.petcare.petcare.model.dto.OwnerDTO;
 import com.petcare.petcare.model.dto.OwnerInsertDTO;
+import com.petcare.petcare.model.dto.OwnerUpdateDTO;
 import com.petcare.petcare.model.dto.RoleDTO;
 import com.petcare.petcare.model.entities.Owner;
 import com.petcare.petcare.model.entities.Role;
@@ -106,7 +107,7 @@ public class OwnerService implements UserDetailsService {
     }
 
     @Transactional
-    public OwnerDTO update(Long id, OwnerDTO dto) {
+    public OwnerDTO update(Long id, OwnerUpdateDTO dto) {
 
         try {
             Owner entity = ownerRepository.getReferenceById(id);

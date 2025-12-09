@@ -1,9 +1,6 @@
 package com.petcare.petcare.controllers;
 
-import com.petcare.petcare.model.dto.OwnerDTO;
-import com.petcare.petcare.model.dto.OwnerInsertDTO;
-import com.petcare.petcare.model.dto.PetDTO;
-import com.petcare.petcare.model.dto.PetMinDTO;
+import com.petcare.petcare.model.dto.*;
 import com.petcare.petcare.services.OwnerService;
 import com.petcare.petcare.services.PetService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -72,9 +69,9 @@ public class OwnerController {
     }
 
     @PutMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<OwnerDTO> update(@PathVariable Long id, @Valid @RequestBody OwnerDTO ownerDTO) {
-        ownerDTO = ownerService.update(id, ownerDTO);
-        return ResponseEntity.ok(ownerDTO);
+    public ResponseEntity<OwnerDTO> update(@PathVariable Long id, @Valid @RequestBody OwnerUpdateDTO ownerDTO) {
+        OwnerDTO newDTO = ownerService.update(id, ownerDTO);
+        return ResponseEntity.ok(newDTO);
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")

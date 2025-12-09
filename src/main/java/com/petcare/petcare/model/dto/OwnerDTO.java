@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.petcare.petcare.model.entities.Owner;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
-import org.springframework.security.core.GrantedAuthority;
 
 import java.time.LocalDate;
 import java.util.HashSet;
