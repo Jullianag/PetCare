@@ -3,6 +3,7 @@ package com.petcare.petcare.controllers.handlers;
 import com.petcare.petcare.model.dto.CustomError;
 import com.petcare.petcare.model.dto.ValidationError;
 import com.petcare.petcare.services.exceptions.DatabaseException;
+import com.petcare.petcare.services.exceptions.EmailException;
 import com.petcare.petcare.services.exceptions.ForbiddenException;
 import com.petcare.petcare.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -50,6 +51,14 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(ForbiddenException.class)
     public ResponseEntity<CustomError> forbidden(ForbiddenException e, HttpServletRequest request) {
         HttpStatus httpStatus = HttpStatus.FORBIDDEN;
+        CustomError customError = new CustomError(Instant.now(), httpStatus.value(),
+                e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(httpStatus).body(customError);
+    }
+
+    @ExceptionHandler(EmailException.class)
+    public ResponseEntity<CustomError> forbidden(EmailException e, HttpServletRequest request) {
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
         CustomError customError = new CustomError(Instant.now(), httpStatus.value(),
                 e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(httpStatus).body(customError);
