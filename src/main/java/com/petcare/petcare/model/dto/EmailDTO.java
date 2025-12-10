@@ -1,10 +1,17 @@
 package com.petcare.petcare.model.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class EmailDTO {
 
+    @NotBlank(message = "fromEmail cannot be blank.")
     private String fromEmail;
+
+    @NotBlank(message = "fromName cannot be blank.")
     private String fromName;
     private String replyTo;
+
+    @NotBlank(message = "to cannot be blank.")
     private String to;
     private String subject;
     private String body;

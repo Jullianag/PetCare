@@ -9,7 +9,6 @@ import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
-import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -49,7 +48,6 @@ public class EmailService {
             }
 
             LOGGER.info("Email send! Status: " + response.getStatusCode());
-
 
         } catch (IOException e) {
             throw new EmailException(e.getMessage());
