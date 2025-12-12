@@ -45,6 +45,13 @@ public class OwnerController {
         return ResponseEntity.ok(ownerDTO);
     }
 
+    @Operation(
+            description = "Get all owners",
+            summary = "List all owners",
+            responses = {
+                    @ApiResponse(description = "OK", responseCode = "200"),
+            }
+    )
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(produces = "application/json")
     public ResponseEntity<Page<OwnerDTO>> findAll(
@@ -53,6 +60,14 @@ public class OwnerController {
         return ResponseEntity.ok(ownerDTOPage);
     }
 
+    @Operation(
+            description = "Get owner by id",
+            summary = "Get owner by id",
+            responses = {
+                    @ApiResponse(description = "OK", responseCode = "200"),
+                    @ApiResponse(description = "Not Found", responseCode = "404")
+            }
+    )
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<OwnerDTO> findById(@PathVariable Long id) {
@@ -60,6 +75,18 @@ public class OwnerController {
         return ResponseEntity.ok(ownerDTO);
     }
 
+    @Operation(
+            description = "Create a new owner",
+            summary = "Create a new owner",
+            responses = {
+                    @ApiResponse(description = "Created", responseCode = "201"),
+                    @ApiResponse(description = "Bad Request", responseCode = "400"),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401"),
+                    @ApiResponse(description = "Forbidden", responseCode = "403"),
+                    @ApiResponse(description = "Unprocessable Entity", responseCode = "422")
+            }
+    )
+    @SecurityRequirement(name = "bearerAuth")
     @PostMapping(produces = "application/json")
     public ResponseEntity<OwnerDTO> insert(@Valid @RequestBody OwnerInsertDTO ownerInsertDTO) {
         OwnerDTO ownerDTO = ownerService.insert(ownerInsertDTO);
@@ -70,6 +97,19 @@ public class OwnerController {
         return ResponseEntity.created(uri).body(ownerDTO);
     }
 
+    @Operation(
+            description = "Update a owner",
+            summary = "Update a owner",
+            responses = {
+                    @ApiResponse(description = "OK", responseCode = "200"),
+                    @ApiResponse(description = "Bad Request", responseCode = "400"),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401"),
+                    @ApiResponse(description = "Forbidden", responseCode = "403"),
+                    @ApiResponse(description = "Not Found", responseCode = "404"),
+                    @ApiResponse(description = "Unprocessable Entity", responseCode = "422")
+            }
+    )
+    @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<OwnerDTO> update(@PathVariable Long id, @Valid @RequestBody OwnerUpdateDTO ownerDTO) {
@@ -77,6 +117,19 @@ public class OwnerController {
         return ResponseEntity.ok(newDTO);
     }
 
+    @Operation(
+            description = "Delete a owner",
+            summary = "Delete a owner",
+            responses = {
+                    @ApiResponse(description = "Success", responseCode = "204"),
+                    @ApiResponse(description = "Bad Request", responseCode = "400"),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401"),
+                    @ApiResponse(description = "Forbidden", responseCode = "403"),
+                    @ApiResponse(description = "Not Found", responseCode = "404"),
+                    @ApiResponse(description = "Unprocessable Entity", responseCode = "422")
+            }
+    )
+    @SecurityRequirement(name = "bearerAuth")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

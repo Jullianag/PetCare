@@ -1,10 +1,17 @@
 package com.petcare.petcare.model.dto;
 
 import com.petcare.petcare.model.entities.Role;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 public class RoleDTO {
 
+    @Schema(description = "Role ID", example = "1")
     private Long id;
+
+    @Schema(
+            description = "Role authority",
+            example = "ROLE_ADMIN"
+    )
     private String authority;
 
     public RoleDTO() {

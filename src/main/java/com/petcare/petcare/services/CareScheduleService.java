@@ -1,7 +1,6 @@
 package com.petcare.petcare.services;
 
 import com.petcare.petcare.model.dto.CareScheduleDTO;
-import com.petcare.petcare.model.dto.CareScheduleMinDTO;
 import com.petcare.petcare.model.entities.CareSchedule;
 import com.petcare.petcare.repositories.CareScheduleRepository;
 import com.petcare.petcare.services.exceptions.ResourceNotFoundException;

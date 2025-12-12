@@ -1,20 +1,40 @@
 package com.petcare.petcare.model.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public class EmailDTO {
 
     @NotBlank(message = "fromEmail cannot be blank.")
+    @Email(message = "Invalid email format.")
+    @Schema(description = "Sender email address")
     private String fromEmail;
 
     @NotBlank(message = "fromName cannot be blank.")
+    @Schema(description = "Sender display name")
     private String fromName;
+
+    @Schema(description = "Reply-to email address")
     private String replyTo;
 
     @NotBlank(message = "to cannot be blank.")
+    @Schema(description = "Recipient email address")
     private String to;
+
+    @Schema(description = "Email subject")
     private String subject;
+
+    @Schema(
+            description = "Email body content",
+            example = "Olá, este é um e-mail teste."
+    )
     private String body;
+
+    @Schema(
+            description = "Content type of the email",
+            example = "text/plain ou text/html"
+    )
     private String contentType;
 
     public EmailDTO() {
