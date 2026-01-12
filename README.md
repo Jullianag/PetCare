@@ -26,7 +26,7 @@ Após executar a aplicação, a documentação estará disponível em:
 ## Exemplo da documentação Swagger
 
 <p align="center">
-  <img src="img/swagger.png" width="400" alt="Swagger PetCare">
+  <img src="https://github.com/Jullianag/PetCare/blob/main/img/swagger.png" width="400" alt="Swagger PetCare">
 </p>
 
 
