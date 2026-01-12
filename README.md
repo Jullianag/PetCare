@@ -58,6 +58,15 @@ O projeto conta com um layout web responsivo, desenvolvido em HTML e CSS, simula
 
 ![Demonstração 2](https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/detalhe.png)
 
+<p align="center">
+  <img src="https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/inicio.png"
+       width="300"
+       alt="Início">
+  <img src="https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/detalhe.png"
+       width="300"
+       alt="Detalhe do Pet">
+</p>
+
 
 # 🛠️ Tecnologias utilizadas
 
