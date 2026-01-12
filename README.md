@@ -15,6 +15,21 @@ essenciais como dados do pet, vínculo com o tutor e acompanhamento de cuidados 
 O projeto foi estruturado de forma clara e didática, pensando tanto no aprendizado quanto em uma base sólida
 para evolução futura.
 
+# 📑 Documentação da API (Swagger)
+
+A API do projeto é documentada utilizando **Swagger / OpenAPI**, permitindo a visualização e o teste dos endpoints de forma interativa.
+
+Após executar a aplicação, a documentação estará disponível em:
+
+- Swagger UI
+
+## Exemplo da documentação Swagger
+
+<p align="center">
+  <img src="img/swagger.png" width="400" alt="Swagger PetCare">
+</p>
+
+
 # 🎯 Funcionalidades
 
 Cadastro, atualização, listagem e remoção de Pets;
