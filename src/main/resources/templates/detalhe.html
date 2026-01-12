@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>PetCare - Detalhe do Pet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="logo">PC</div>
+      <div class="brand-text">
+        <strong>PetCare</strong>
+        <span>Gestão de pets e cuidados</span>
+      </div>
+    </div>
+    <div class="user-info">
+      Bem-vindo(a) <strong>Julliana</strong>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div>
+      <div class="sidebar-title">Menu 📒</div>
+
+      <nav>
+        <ul>
+          <li><a href="#"><span class="icon">📌</span>Início</a></li>
+          <li><a href="#" class="active"><span class="icon">🐕</span>Pets</a></li>
+          <li><a href="#"><span class="icon">👤</span>Tutores</a></li>
+          <li><a href="#"><span class="icon">🗓️</span>Agenda</a></li>
+          <li><a href="#"><span class="icon">⚙️</span>Configurações</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="sidebar-footer">
+      <div>Versão 1.0 • PetCare</div>
+      <div>Projeto pessoal em Spring Boot</div>
+      <div>Desenvolvido por Julliana Gnecco</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="page-title">
+      <div>
+        <h1>Detalhe do Pet</h1>
+        <p>Informações completas, histórico e próximos cuidados agendados.</p>
+      </div>
+
+      <div class="page-actions">
+        <a class="btn btn-outline" href="dashboard.html">← Voltar</a>
+        <button class="btn btn-outline">Editar</button>
+        <button class="btn btn-primary">+ Agendar cuidado</button>
+      </div>
+    </div>
+
+    <div class="grid-detail">
+
+      <!-- CARD PRINCIPAL DO PET -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2>Bianca 🐶</h2>
+            <span>ID: 0001 • Tutor(a): Julliana</span>
+          </div>
+          <div class="pet-status">
+            <span class="tag">Ativo</span>
+            <span class="tag-soft">2,9 kg</span>
+          </div>
+        </div>
+
+        <div class="pet-detail">
+          <div class="pet-photo">
+            <img src="img/york.png" alt="Foto do pet" />
+          </div>
+
+          <div class="pet-summary">
+            <div class="info-grid">
+              <div class="info-item">
+                <small>Espécie</small>
+                <strong>Cão</strong>
+              </div>
+              <div class="info-item">
+                <small>Raça</small>
+                <strong>Yorkshire</strong>
+              </div>
+              <div class="info-item">
+                <small>Sexo</small>
+                <strong>Fêmea</strong>
+              </div>
+              <div class="info-item">
+                <small>Nascimento</small>
+                <strong>15/02/2017</strong>
+              </div>
+              <div class="info-item">
+                <small>Cor</small>
+                <strong>Preto e dourado</strong>
+              </div>
+              <div class="info-item">
+                <small>Microchip</small>
+                <strong>—</strong>
+              </div>
+            </div>
+
+            <div class="pet-tags">
+              <div class="tag">Próx. vacina: 05/02/2025</div>
+              <div class="tag-soft">Alergias: não informado</div>
+              <div class="tag-soft">Observação: sensível a GI</div>
+            </div>
+
+            <div class="pet-actions">
+              <button class="btn btn-outline">Ver tutor</button>
+              <button class="btn btn-outline">Ver histórico</button>
+              <button class="btn btn-danger">Excluir</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUNA DIREITA -->
+      <aside class="detail-right">
+
+        <!-- SAÚDE / VACINAS -->
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h2>Saúde & Vacinas</h2>
+              <span>Resumo rápido</span>
+            </div>
+          </div>
+
+          <div class="care-list">
+            <div class="care-item">
+              <div class="care-title">Vacina V10</div>
+              <div class="care-pet">Próxima: 05/02/2025</div>
+              <div class="care-date">Última: 05/02/2024</div>
+              <div class="care-status">Em dia</div>
+            </div>
+
+            <div class="care-item">
+              <div class="care-title">Antirrábica</div>
+              <div class="care-pet">Próxima: 10/09/2025</div>
+              <div class="care-date">Última: 10/09/2024</div>
+              <div class="care-status">Agendar</div>
+            </div>
+
+            <div class="care-item">
+              <div class="care-title">Vermífugo</div>
+              <div class="care-pet">Próximo: 02/02/2025</div>
+              <div class="care-date">Intervalo: 3 meses</div>
+              <div class="care-pill">Rotina</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRÓXIMOS CUIDADOS -->
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h2>Próximos cuidados</h2>
+              <span>Próximos 30 dias</span>
+            </div>
+          </div>
+
+          <div class="care-list">
+            <div class="care-item">
+              <div class="care-title">Vacina V10</div>
+              <div class="care-pet">Bianca • 05/02/2025</div>
+              <div class="care-date">Data: 05/02/2025</div>
+              <div class="care-status">Agendado</div>
+            </div>
+
+            <div class="care-item">
+              <div class="care-title">Banho & tosa</div>
+              <div class="care-pet">Bianca • 07/02/2025</div>
+              <div class="care-date">PetShop AuMigo</div>
+              <div class="care-pill">Estética</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- OBSERVAÇÕES -->
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <h2>Observações</h2>
+              <span>Notas importantes</span>
+            </div>
+          </div>
+
+          <div class="notes">
+            <p><strong>Alimentação:</strong> ração hidrolisada / low fat (conforme orientação).</p>
+            <p><strong>Cuidados:</strong> sensibilidade gastrointestinal; atenção a mudanças.</p>
+            <p><strong>Clínica favorita:</strong> Pet Saúde.</p>
+          </div>
+        </section>
+
+      </aside>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

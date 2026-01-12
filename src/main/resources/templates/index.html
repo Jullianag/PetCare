@@ -1,10 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>PetCare - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
+<div class="app">
 
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <div class="logo">PC</div>
+            <div class="brand-text">
+                <strong>PetCare</strong>
+                <span>Gestão de pets e cuidados</span>
+            </div>
+        </div>
+        <div class="user-info">
+            Bem-vindo(a) <strong>Julliana</strong>
+        </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside>
+        <div>
+            <div class="sidebar-title">Menu 📒</div>
+
+            <nav>
+                <ul>
+                    <li><a href="#" class="active"><span class="icon">📌</span>Início</a></li>
+                    <li><a href="#"><span class="icon">🐕</span>Pets</a></li>
+                    <li><a href="#"><span class="icon">👤</span>Tutores</a></li>
+                    <li><a href="#"><span class="icon">🗓️</span>Agenda</a></li>
+                    <li><a href="#"><span class="icon">⚙️</span>Configurações</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            <div>Versão 1.0 • PetCare</div>
+            <div>Projeto pessoal em Spring Boot</div>
+            <div>Desenvolvido por Julliana Gnecco</div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+        <div class="page-title">
+            <div>
+                <h1>Meus Pets</h1>
+                <p>Veja rapidamente os dados principais dos seus pets e os próximos cuidados agendados.</p>
+            </div>
+            <div class="page-actions">
+                <button class="btn btn-outline">Filtrar</button>
+                <button class="btn btn-primary">+ Novo Pet</button>
+            </div>
+        </div>
+
+        <div class="grid-main">
+            <!-- COLUNA ESQUERDA: PETS -->
+            <section class="card">
+                <div class="card-header">
+                    <div>
+                        <h2>Pets cadastrados</h2>
+                        <span>Exibindo 3 de 3</span>
+                    </div>
+                </div>
+
+                <div class="pets-grid">
+                    <!-- Pet 1 -->
+                    <article class="pet-card">
+                        <div class="pet-header">
+                            <div class="pet-avatar">
+                                <img src="img/york.png" alt="Foto do pet">
+                            </div>
+                            <div class="pet-info">
+                                <strong>Bianca</strong>
+                                <span>Yorkshire • Fêmea</span>
+                                <span>Tutora: Julliana</span>
+                            </div>
+                        </div>
+
+                        <div class="pet-tags">
+                            <div class="tag">Próx. vacina: 05/02/2025</div>
+                            <div class="tag-soft">Peso: 2,9 kg</div>
+                        </div>
+
+                        <div class="pet-footer">
+                            <small>Nasc.: 15/02/2017</small>
+                            <a href="#" class="link-pet">Ver detalhes →</a>
+                        </div>
+                    </article>
+
+                    <!-- Pet 2 -->
+                    <article class="pet-card">
+                        <div class="pet-header">
+                            <div class="pet-avatar">
+                                <img src="img/gato.jpg" alt="Foto do pet">
+                            </div>
+                            <div class="pet-info">
+                                <strong>Luna</strong>
+                                <span>Gato SRD • Fêmea</span>
+                                <span>Tutora: Julliana</span>
+                            </div>
+                        </div>
+
+                        <div class="pet-tags">
+                            <div class="tag">Próx. consulta: 20/08/2025</div>
+                            <div class="tag-soft">Peso: 5 kg</div>
+                        </div>
+
+                        <div class="pet-footer">
+                            <small>Nasc.: 11/06/2020</small>
+                            <a href="#" class="link-pet">Ver detalhes →</a>
+                        </div>
+                    </article>
+
+                    <!-- Pet 3 -->
+                    <article class="pet-card">
+                        <div class="pet-header">
+                            <div class="pet-avatar">
+                                <img src="img/golden.png" alt="Foto do pet">
+                            </div>
+                            <div class="pet-info">
+                                <strong>Thor</strong>
+                                <span>Golden Retriever • Macho</span>
+                                <span>Tutor: Julliana</span>
+                            </div>
+                        </div>
+
+                        <div class="pet-tags">
+                            <div class="tag">Banho & tosa: 07/02/2025</div>
+                            <div class="tag-soft">Peso: 28 kg</div>
+                        </div>
+
+                        <div class="pet-footer">
+                            <small>Nasc.: 03/09/2019</small>
+                            <a href="#" class="link-pet">Ver detalhes →</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- COLUNA DIREITA: PRÓXIMOS CUIDADOS -->
+            <aside class="card">
+                <div class="card-header">
+                    <div>
+                        <h2>Próximos cuidados</h2>
+                        <span>Resumo dos próximos 30 dias</span>
+                    </div>
+                </div>
+
+                <div class="care-list">
+                    <div class="care-item">
+                        <div class="care-title">Vacina V10</div>
+                        <div class="care-pet">Bianca • 05/02/2025</div>
+                        <div class="care-date">Data: 05/02/2025</div>
+                        <div class="care-status">Agendado</div>
+                    </div>
+
+                    <div class="care-item">
+                        <div class="care-title">Retorno gastro</div>
+                        <div class="care-pet">Bianca • 18/06/2025</div>
+                        <div class="care-date">Clínica Pet Saúde</div>
+                        <div class="care-status">Retorno</div>
+                    </div>
+
+                    <div class="care-item">
+                        <div class="care-title">Check-up anual</div>
+                        <div class="care-pet">Luna • 20/08/2025</div>
+                        <div class="care-date">Consulta geral</div>
+                        <div class="care-status">Agendado</div>
+                    </div>
+
+                    <div class="care-item">
+                        <div class="care-title">Banho & tosa completo</div>
+                        <div class="care-pet">Thor • 07/02/2025</div>
+                        <div class="care-date">PetShop AuMigo</div>
+                        <div class="care-pill">Estética</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+</div>
 </body>
 </html>

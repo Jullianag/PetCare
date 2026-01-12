@@ -1,0 +1,565 @@
+:root {
+  --bg-body: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-header: #0f766e;
+  --bg-sidebar: #0b4f49;
+  --accent: #22c55e;
+  --accent-soft: #dcfce7;
+  --text-main: #111827;
+  --text-soft: #6b7280;
+  --border-soft: #e5e7eb;
+  --radius-lg: 16px;
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+}
+
+/* Layout geral */
+.app {
+  display: grid;
+  grid-template-rows: 64px 1fr;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+header {
+  grid-column: 1 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: var(--bg-header);
+  color: #ecfeff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+  z-index: 10;
+}
+
+header .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #facc15, #f97316);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 900;
+  font-size: 22px;
+  text-align: center;
+}
+
+header .brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+header .brand-text strong {
+  padding-left: 2px;
+  font-size: 25px;
+}
+
+header .brand-text span {
+  padding-left: 2px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+header .user-info {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* Sidebar */
+aside {
+  background: var(--bg-sidebar);
+  color: #e5e7eb;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+nav li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 15px;
+  color: #e5e7eb;
+  transition: background 0.2s, transform 0.1s;
+}
+
+nav li a span.icon {
+  width: 20px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+nav li a.active,
+nav li a:hover {
+  background: rgba(16, 185, 129, 0.2);
+  transform: translateX(2px);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Main */
+main {
+  padding: 24px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.page-title h1 {
+  font-size: 24px;
+}
+
+.page-title p {
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #064e3b;
+  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.4);
+}
+
+.btn-primary:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-soft);
+  border: 1px solid var(--border-soft);
+}
+
+.btn-outline:hover {
+  background: #f9fafb;
+}
+
+/* Grid principal: Meus Pets + Próximos cuidados */
+.grid-main {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1.2fr);
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 18px 18px 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.card-header h2 {
+  font-size: 18px;
+  color: var(--text-main);
+}
+
+.card-header span {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+/* Cards de Pets */
+.pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.pet-card {
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  background: linear-gradient(145deg, #ffffff, #f9fafb);
+}
+
+.pet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+  border-color: rgba(34, 197, 94, 0.7);
+}
+
+.pet-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pet-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid #bbf7d0;
+}
+
+.pet-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pet-info strong {
+  font-size: 14px;
+}
+
+.pet-info span {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.pet-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tag {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: #166534;
+}
+
+.tag-soft {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.pet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.pet-footer small {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.link-pet {
+  font-size: 12px;
+  color: #0f766e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link-pet:hover {
+  text-decoration: underline;
+}
+
+/* Próximos cuidados */
+.care-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.care-item {
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  padding: 10px 10px 9px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 10px;
+  background: #f9fafb;
+}
+
+.care-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.care-date {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.care-pill {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4338ca;
+  justify-self: flex-start;
+}
+
+.care-pet {
+  font-size: 11px;
+  color: #0f766e;
+  text-align: right;
+}
+
+.care-status {
+  font-size: 11px;
+  color: #f97316;
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Responsivo */
+@media (max-width: 960px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  aside {
+    display: none;
+  }
+
+  header {
+    grid-column: 1 / 2;
+  }
+
+  .grid-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding: 18px 16px 24px;
+  }
+
+  header {
+    padding: 0 16px;
+  }
+
+  .page-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .pets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== DETALHE DO PET ====== */
+.grid-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1.2fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.detail-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pet-status {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pet-detail {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 18px;
+  padding-top: 8px;
+}
+
+.pet-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid #bbf7d0;
+  background: #f9fafb;
+}
+
+.pet-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.info-item {
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 10px 10px;
+  background: #f9fafb;
+}
+
+.info-item small {
+  display: block;
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 3px;
+}
+
+.info-item strong {
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.pet-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.btn-danger {
+  border-radius: 999px;
+  border: 1px solid #fb7185;
+  background: transparent;
+  color: #9f1239;
+}
+
+.btn-danger:hover {
+  background: #fff1f2;
+}
+
+/* Observações */
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.notes p {
+  color: var(--text-soft);
+}
+
+.notes p strong {
+  color: var(--text-main);
+}
+
+/* Responsivo - detalhe */
+@media (max-width: 960px) {
+  .grid-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-photo {
+    width: 100%;
+    height: 240px;
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pet-status {
+    justify-content: flex-start;
+  }
+}
+

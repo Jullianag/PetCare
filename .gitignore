@@ -19,6 +19,10 @@ target/
 *.iml
 *.ipr
 
+# Arquivos de configuração de produção
+application-prod.properties
+
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
