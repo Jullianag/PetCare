@@ -54,10 +54,6 @@ O projeto conta com um layout web responsivo, desenvolvido em HTML e CSS, simula
 
 ## Algumas imagens do que seria o Layout web
 
-![Demonstração 1](https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/inicio.png)
-
-![Demonstração 2](https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/detalhe.png)
-
 <p align="center">
   <img src="https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/inicio.png"
        width="300"
