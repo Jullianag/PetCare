@@ -29,11 +29,11 @@ Estrutura preparada para autenticação e evolução futura do sistema.
 
 ## Organização em camadas:
 
-• Controller
-• Service
-• Repository
-• DTO
-• Entity
+ - Controller
+ - Service
+ - Repository
+ - DTO
+ - Entity
 
 Tratamento de exceções e validações de dados
 
@@ -54,9 +54,9 @@ O projeto conta com um layout web responsivo, desenvolvido em HTML e CSS, simula
 
 ## Algumas imagens do que seria o Layout web
 
-![Demonstração 1](https://github.com/Jullianag/PetCare/tree/main/src/main/resources/templates/img/inicio.png)
+![Demonstração 1](https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/inicio.png)
 
-![Demonstração 2](https://github.com/Jullianag/PetCare/tree/main/src/main/resources/templates/img/detalhe.png)
+![Demonstração 2](https://github.com/Jullianag/PetCare/blob/main/src/main/resources/templates/img/detalhe.png)
 
 
 # 🛠️ Tecnologias utilizadas
